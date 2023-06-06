@@ -1,0 +1,63 @@
+.einkaufen {
+  color: brown;
+  width: 450px;
+  border: 15px solid #8b5a2b;
+  padding: 10px;
+  margin-left: 150px;
+  margin-top: 20px;
+  background-color: #f5e8c5;
+  background-image: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.listitemsinspring {
+  width: 400px;
+  height: 10px;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 3px;
+  background-image: none;
+  background-color: #dc7b05;
+  border-radius: 3%;
+  text-decoration: none;
+  display: flex;
+  color: #56160c;
+  list-style: none;
+  align-items: center;
+  justify-content: space-around;
+  li {
+    background-image: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+
+    li:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-image: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.photoslistspring {
+  .backgroungichnixwill {
+  }
+  background-image: none;
+  margin: 0%;
+  display: flex;
+  align-items: start;
+  margin-right: 1rem;
+}
+.backgroungichnixwill {
+  background-image: none;
+}

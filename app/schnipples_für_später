@@ -1,0 +1,172 @@
+<Image
+  className="{styles.pierrehomepage}"
+  src="/Pierre.png"
+  alt="shop owner"
+  width="200"
+  height="200"
+/>
+
+<Image src="/seasons.jpg" alt="shop owner" width="200" height="200" />
+
+import Image from 'next/image'; import Link from 'next/link'; import styles from
+'../page.module.scss'; export default function HomePage() { return (
+<main>
+  <div className="{styles.navbar}">
+    <ul>
+      <li>
+        <a href="http://localhost:3000/">home</a>
+      </li>
+      <li>
+        <a href="http://localhost:3000/spring">Spring</a>
+      </li>
+      <li>
+        <a href="http://localhost:3000/Summer">Summer</a>
+      </li>
+      <li>
+        <a href="http://localhost:3000/Fall">Fall</a>
+      </li>
+      <li>
+        <a href="http://localhost:3000/Winter">Winter</a>
+      </li>
+    </ul>
+  </div>
+</main>
+); } 'use client'; import { useRouter } from 'next/navigation'; import {
+useState } from 'react'; import { addToCart } from
+'../app/spring/[springseedId]/actions'; export default function CPButtonPurple({
+springseedId }) { const router = useRouter(); const [quantity, setQuantity] =
+useState(1); const handleAddToCart = async () => { router.refresh(); await
+addToCart(springseedId, quantity); }; return (
+<button
+
+  onClick="{handleAddToCart}"
+>
+  Add to cart
+</button>
+); }
+
+
+
+
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { addToCart } from '../actions';
+
+export default function BuyButton(props) {
+  const router = useRouter();
+  return (
+    <button
+      formAction={async () => {
+        router.refresh();
+        await addToCart(props.springseedId);
+      }}
+    >
+      Add to cart
+    </button>
+  );
+}
+
+
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { getspringseedById, Springseeds } from '../../../databaseSpring/spring';
+import styles from '../../page.module.scss';
+
+export const dynamic = 'force-dynamic';
+
+export default async function springseedPage({ params }) {
+  const singlespringseed = await getspringseedById(Number(params.springseedId));
+
+  if (!singlespringseed) {
+    notFound();
+  }
+
+  return (
+    <main>
+      <main className={styles.springseedIdnavbar}>
+        <ul>
+          <li>
+            <a href="http://localhost:3000/">home</a>
+          </li>
+          <li>
+            <a href="http://localhost:3000/spring"> back </a>
+          </li>
+          <li>
+            <a href="http://localhost:3000/Summer">Summer</a>
+          </li>
+          <li>
+            <a href="http://localhost:3000/Fall">Fall</a>
+          </li>
+          <li>
+            <a href="http://localhost:3000/Winter">Winter</a>
+          </li>
+        </ul>
+        {/* <BuyButton /> */}
+      </main>
+      <section className={styles.springseedId}>
+        <h1>{singlespringseed.name}</h1>
+        <Image
+          className={styles.individualimage}
+          src={`/images/${singlespringseed.name}.png`}
+          width={50}
+          height={50}
+        />
+        <p>{singlespringseed.description}</p>
+        <p>
+          if you want to grow {singlespringseed.name} you need to wait at least
+          {singlespringseed.growtime} days
+        </p>
+        <br />
+        the price for 1 bag of {singlespringseed.name}seeds is
+        {singlespringseed.preis}
+      </section>
+    </main>
+  );
+}
+
+
+import { notFound } from 'next/navigation';
+import {
+  getspringseedById,
+  springseeds112,
+} from '../../../databaseSpring/spring';
+import { getCookie } from '../../../utils/cookies';
+import { parseJson } from '../../../utils/json';
+import FruitCommentForm from './FruitCommentForm';
+
+type Props = {
+  params: { springseeds112Id: nummber };
+};
+
+export type CookieCommentItem = {
+  id: number;
+  comment?: string;
+};
+
+export default async function springseedPage({ params }) {
+  const singlespringseed = await getspringseedById(Number(params.springseedId));
+
+  if (!singlespringseed) {
+    notFound();
+  }
+
+  const fruitCommentsCookie = getCookie('fruitComments');
+  const fruitComments = !fruitCommentsCookie
+    ? []
+    : parseJson(fruitCommentsCookie);
+
+  const fruitToUpdate = fruitComments?.find((fruitComment) => {
+    return fruitComment.id === springseeds112.id;
+  });
+
+  return (
+    <>
+      <h1>
+        {springseeds112.price} {springseeds112.name}
+      </h1>
+      {fruitToUpdate?.comment}
+      <FruitCommentForm fruitId={springseeds112.id} />
+    </>
+  );
+}

@@ -1,34 +1,44 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { springseeds } from '../../databaseSpring/spring';
-import styles from '../page.module.scss';
+import { getspringseeds } from '../../databaseSpring/spring.ts';
+import styles from './springpage.module.scss';
 
-export default function Springpage() {
+export default async function Springpage() {
+  const springseeds = await getspringseeds();
   return (
-    <main>
-      <a className={styles.navbarspring} href="http://localhost:3000/">
-        home
-      </a>
+    <>
       <main className={styles.einkaufen}>
         {springseeds.map((springseed) => {
           return (
-            <div
+            <main
+              className={styles.backgroungichnixwill}
               key={`spring-div-${springseed.id}`}
-              className={styles.seedItem}
             >
-              <Image
-                src={`/images/${springseed.name}.png`}
-                width={30}
-                height={30}
-              />
               <section>
-                <Link href={`/spring/${springseed.id}`}>{springseed.name}</Link>
-                {springseed.preis}
+                <ul className={styles.listitemsinspring}>
+                  <li>
+                    <Image
+                      className={styles.photoslistspring}
+                      src={`/images/${springseed.name}.png`}
+                      width={40}
+                      height={40}
+                    />
+                  </li>
+                  <li>
+                    <Link href={`/spring/${springseed.id}`}>
+                      {springseed.name}
+                    </Link>
+                  </li>
+                  <li>🪙{springseed.preis}</li>
+                </ul>
               </section>
-            </div>
+            </main>
           );
         })}
       </main>
-    </main>
+      <div>
+        <Image src="/Krobus_Trenchcoat.png" alt="s" width={30} height={30} />
+      </div>
+    </>
   );
 }

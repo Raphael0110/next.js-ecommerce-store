@@ -1,4 +1,7 @@
-export const springseeds = [
+import { cache } from 'react';
+import { sql } from './connect';
+
+export const springseeds112 = [
   {
     id: 1,
     name: 'Cauliflower',
@@ -41,6 +44,7 @@ export const springseeds = [
     type: 'frui',
     growtime: 8,
     preis: 100,
+    description: 'A sweet, juicy favorite with an appealing red color.',
   },
   {
     id: 8,
@@ -52,6 +56,25 @@ export const springseeds = [
   { id: 9, name: 'Leek', type: 'veggi', growtime: 7, preis: 35 },
 ];
 
-export function getspringseedById(id) {
-  return springseeds.find((springseed) => springseed.id === id);
-}
+type Springseeds = {
+  id: number;
+  name: string;
+  type: string;
+  growtime: number;
+  preis: number;
+};
+
+export const getspringseeds = cache(async () => {
+  const springseeds = await sql<Springseeds[]>`
+ SELECT * FROM springseeds;
+  `;
+  return springseeds;
+});
+
+export const getspringseedById = cache(async (id: number) => {
+  const [springseeds] = await sql<Springseeds[]>`
+SELECT * FROM springseeds WHERE id =${id};
+
+`;
+  return springseeds;
+});

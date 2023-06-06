@@ -1,16 +1,12 @@
 @font-face {
   font-family: 'stardew-valley';
-  src: url(./VT323-Regular.ttf);
+  src: url(./schrifftart/StardewValley.ttf);
 }
 
 * {
   margin: 0;
-  color: black;
-
-  font-size: 20px;
   background-image: url('../public/background.jpg');
   background-size: cover;
   background-position: center;
   font-family: 'stardew-valley', serif;
-  font-weight: 500;
 }
