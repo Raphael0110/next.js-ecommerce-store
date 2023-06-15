@@ -42,15 +42,10 @@
 }
 .navbarbaskedimg {
   background-image: none;
-  position: relative;
-}
-.basked {
-  position: absolute;
-  top: -5px; /* Adjust the vertical position */
-  right: 398px; /* Adjust the horizontal position */
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 4px;
-  font-size: 12px;
+  a {
+    background-image: none;
+  }
+  Image {
+    background-image: none;
+  }
 }

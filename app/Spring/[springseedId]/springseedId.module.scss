@@ -12,15 +12,47 @@
   h1 {
     background-image: none;
     font-size: 60px;
+    padding-bottom: 30px;
   }
   Image {
     background-image: none;
+    padding-bottom: 20px;
   }
   p {
+    padding-top: 20px;
     background-image: none;
   }
 }
 
 .individualimage {
   background-image: none;
+}
+.addthings {
+  padding-top: 1.4rem;
+  background-image: none;
+  background-color: #f5e8c5;
+  display: flex;
+  justify-content: space-between;
+  input {
+    background-image: none;
+  }
+  button {
+    background-image: none;
+    border-radius: 20px;
+  }
+}
+.seedsdescription {
+  background-image: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.moneyshow {
+  background-image: none;
+  display: flex;
+  justify-content: space-between;
+}
+.howmutchisthefish {
+  background-image: none;
+  font-weight: 500;
+  font-size: xx-large;
 }

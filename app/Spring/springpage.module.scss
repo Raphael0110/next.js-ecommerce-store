@@ -7,6 +7,7 @@
   margin-top: 20px;
   background-color: #f5e8c5;
   background-image: none;
+
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -14,14 +15,13 @@
 }
 
 .listitemsinspring {
-  width: 400px;
+  width: 402px;
   height: 10px;
   border: 2px solid black;
   padding: 20px;
   margin: 3px;
   background-image: none;
   background-color: #dc7b05;
-  border-radius: 3%;
   text-decoration: none;
   display: flex;
   color: #56160c;
@@ -37,6 +37,7 @@
 
     li:last-child {
       margin-right: 0;
+      background-image: none;
     }
 
     a {
@@ -45,19 +46,14 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      color: #56160c;
     }
   }
 }
 
-.photoslistspring {
-  .backgroungichnixwill {
-  }
-  background-image: none;
-  margin: 0%;
-  display: flex;
-  align-items: start;
-  margin-right: 1rem;
-}
 .backgroungichnixwill {
+  background-image: none;
+}
+.photoslistspring {
   background-image: none;
 }

@@ -37,17 +37,19 @@ export default async function singlespringseedpage(props: Props) {
           height={50}
           alt="springseeds"
         />
-        <p>
-          if you want to grow {singlespringseed.name} you need to wait at least
-          {singlespringseed.growtime} days
-        </p>
-        <br />
-        the price for 1 bag of {singlespringseed.name}seeds is
-        {singlespringseed.preis}
+        <div className={styles.seedsdescription}>
+          {singlespringseed.description}
+        </div>
+        <div className={styles.moneyshow}>
+          The price for 1 bag of {singlespringseed.name}seeds is
+          <div className={styles.howmutchisthefish}>
+            🪙{singlespringseed.preis}
+          </div>
+        </div>
+        <div>
+          <AddtoCart springseedId={singlespringseed.id} quantity={0} />
+        </div>
       </section>
-      <div>
-        <AddtoCart springseedId={singlespringseed.id} />
-      </div>
     </main>
   );
 }

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { getspringseeds } from '../../databaseSpring/spring';
 import { getCookie } from '../../utils/cookies';
 import { parseJson } from '../../utils/json';
-import CartBadge from '../components/zahlen';
 import styles from './cart.module.scss';
+import RemoveButton from './removebutton';
 
 export const dynamic = 'force-dynamic';
 
@@ -68,12 +68,17 @@ export default async function CartPage() {
                     <div className={styles.iteminthecardtotalpries}>
                       €{subTotal}
                     </div>
+
+                    <RemoveButton />
                   </div>
                 );
               })}
             </div>
           </div>
         )}
+      </div>
+      <div>
+        <Link href="http://localhost:3000/checkout">checkout</Link>
       </div>
     </main>
   );

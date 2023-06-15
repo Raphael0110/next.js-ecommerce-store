@@ -14,24 +14,22 @@ export default async function Springpage() {
               className={styles.backgroungichnixwill}
               key={`spring-div-${springseed.id}`}
             >
-              <section>
-                <ul className={styles.listitemsinspring}>
-                  <li>
-                    <Image
-                      className={styles.photoslistspring}
-                      src={`/images/${springseed.name}.png`}
-                      width={40}
-                      height={40}
-                    />
-                  </li>
-                  <li>
-                    <Link href={`/spring/${springseed.id}`}>
-                      {springseed.name}
-                    </Link>
-                  </li>
-                  <li>🪙{springseed.preis}</li>
-                </ul>
-              </section>
+              <ul className={styles.listitemsinspring}>
+                <li>
+                  <Image
+                    className={styles.photoslistspring}
+                    src={`/images/${springseed.name}.png`}
+                    width={40}
+                    height={40}
+                  />
+                </li>
+                <li className={styles.springseedname}>
+                  <Link href={`/spring/${springseed.id}`}>
+                    {springseed.name}
+                  </Link>
+                </li>
+                <li>🪙{springseed.preis}</li>
+              </ul>
             </main>
           );
         })}

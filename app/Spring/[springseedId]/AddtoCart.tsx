@@ -3,9 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
 import { addToCart } from './actions';
+import styles from './springseedId.module.scss';
 
 type Props = {
   springseedId: number;
+  quantity: number;
 };
 
 export default function AddtoCart(props: Props) {
@@ -13,7 +15,7 @@ export default function AddtoCart(props: Props) {
   const router = useRouter();
 
   return (
-    <form>
+    <form className={styles.addthings}>
       <input
         type="number"
         min="1"
@@ -22,7 +24,7 @@ export default function AddtoCart(props: Props) {
           setQuantity(Number(event.currentTarget.value))
         }
       />
-      <br />
+
       <button
         formAction={async () => {
           router.refresh();

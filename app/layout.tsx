@@ -38,20 +38,14 @@ export default function RootLayout({ children }: LayoutProps) {
               <a href="http://localhost:3000/Winter">Winter</a>
             </li>
             <li>
-              <div>
+              <div className={styles.navbarbaskedimg}>
                 <a href="http://localhost:3000/cart">
-                  <Image
-                    className={styles.navbarbaskedimg}
-                    src="/basked.png"
-                    width={30}
-                    height={30}
-                    alt=""
-                  />
-                  <span className={styles.basked}>
-                    <Zahlenimkorb />
-                  </span>
+                  <Image src="/basked.png" width={30} height={30} alt="" />
                 </a>
               </div>
+            </li>
+            <li>
+              <Zahlenimkorb />
             </li>
           </ul>
         </div>
